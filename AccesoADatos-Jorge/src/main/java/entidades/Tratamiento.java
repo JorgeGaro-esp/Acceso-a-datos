@@ -7,15 +7,11 @@ import java.util.List;
 public class Tratamiento {
 
     // Atributos
-    private long id;
+    private Long id;
     private String nombreT;
     private LocalDate fechaInicio;
     private boolean consentimiento;
-
-    // Relacion N a 1: tratamiento individual de un paciente
     private Paciente paciente;
-
-    // Relacion 1 a N: citas propias de este tratamiento
     private List<Cita> citas = new ArrayList<>();
 
     // Constructores
@@ -66,7 +62,6 @@ public class Tratamiento {
         return paciente;
     }
 
-    // Mantiene sincronizada la lista de tratamientos del paciente
     public void setPaciente(Paciente nuevo) {
         if (this.paciente == nuevo) {
             return;
@@ -89,7 +84,7 @@ public class Tratamiento {
         this.citas = citas;
     }
 
-    // Metodos 1 a N (mantienen sincronizados ambos lados)
+ 
     public void agregarCita(Cita cita) {
         if (!citas.contains(cita)) {
             citas.add(cita);
@@ -103,7 +98,6 @@ public class Tratamiento {
         }
     }
 
-    // No se incluye el paciente para evitar recursion infinita
     @Override
     public String toString() {
         return "Tratamiento [id=" + id + ", nombreT=" + nombreT + ", fechaInicio=" + fechaInicio

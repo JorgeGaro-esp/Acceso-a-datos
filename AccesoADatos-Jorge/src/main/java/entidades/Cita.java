@@ -5,15 +5,10 @@ import java.time.format.DateTimeFormatter;
 
 public class Cita {
 
-   
-    
-
     // Atributos    
 	private long id;
     private LocalDateTime fechaYHora;
     public static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    
-    // Relacion N a 1: cita propia de un tratamiento
     private Tratamiento tratamiento;
 
     // Constructores
@@ -46,7 +41,6 @@ public class Cita {
         return tratamiento;
     }
 
-    // Mantiene sincronizada la lista de citas del tratamiento
     public void setTratamiento(Tratamiento nuevo) {
         if (this.tratamiento == nuevo) {
             return;

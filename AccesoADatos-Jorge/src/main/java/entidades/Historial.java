@@ -6,14 +6,9 @@ import java.util.List;
 public class Historial {
 
     // Atributos
-    private long numeroHistoria;
+    private Long numeroHistoria;
     private String descripcion;
-
-    // Relacion 1 a 1: historial propio de un paciente
     private Paciente paciente;
-
-    // Relacion N a M: un historial puede tener varias alergias (o ninguna)
-    // y una misma alergia puede estar en varios historiales
     private List<Alergia> alergias = new ArrayList<>();
 
     // Constructores
@@ -46,7 +41,7 @@ public class Historial {
         return paciente;
     }
 
-    // Mantiene sincronizado el otro lado (Paciente.historial)
+
     public void setPaciente(Paciente paciente) {
         if (this.paciente == paciente) {
             return;
@@ -69,7 +64,6 @@ public class Historial {
         this.alergias = alergias;
     }
 
-    // Metodos N a M (mantienen sincronizados ambos lados)
     public void agregarAlergia(Alergia alergia) {
         if (!alergias.contains(alergia)) {
             alergias.add(alergia);
@@ -84,7 +78,6 @@ public class Historial {
         alergia.getHistoriales().remove(this);
     }
 
-    // No se incluye el paciente para evitar recursion infinita
     @Override
     public String toString() {
         return "Historial [numeroHistoria=" + numeroHistoria + ", descripcion=" + descripcion + ", alergias="

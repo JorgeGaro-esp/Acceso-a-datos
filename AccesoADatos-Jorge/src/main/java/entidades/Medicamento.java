@@ -9,9 +9,7 @@ public class Medicamento {
     private long id;
     private String nombreM;
     private String principioActivo;
-    private double dosisMax; // dosis maxima diaria en miligramos
-
-    // Relacion 1 a N: un medicamento puede estar asociado a varias alergias
+    private double dosisMax; 
     private List<Alergia> alergias = new ArrayList<>();
 
     // Constructores
@@ -66,7 +64,6 @@ public class Medicamento {
         this.alergias = alergias;
     }
 
-    // Metodos (mantienen sincronizado el otro lado de la relacion)
     public void agregarAlergia(Alergia alergia) {
         alergia.setMedicamento(this);
     }
@@ -77,7 +74,6 @@ public class Medicamento {
         }
     }
 
-    // No se incluyen las alergias para evitar recursion infinita
     @Override
     public String toString() {
         return "Medicamento [id=" + id + ", nombreM=" + nombreM + ", principioActivo=" + principioActivo

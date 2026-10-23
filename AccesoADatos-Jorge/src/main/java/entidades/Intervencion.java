@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Intervencion extends Cita {
 
     // Atributos
-    private int minutos; // duracion en minutos
+    private int minutos;
 
     // Constructores
     public Intervencion() {

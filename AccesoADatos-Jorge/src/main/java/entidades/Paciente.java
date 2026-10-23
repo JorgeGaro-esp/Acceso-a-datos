@@ -7,18 +7,14 @@ import java.util.List;
 public class Paciente {
 
     // Atributos
-    private long id;
+    private Long id;
     private String nombreP;
     private LocalDate fechaNacimiento;
     private String telefono;
     private String email;
     private String direccion;
     private String nif; // NIF/NIE
-
-    // Relacion 1 a 1: historial propio del paciente
     private Historial historial;
-
-    // Relacion 1 a N: uno o varios tratamientos, individuales de cada paciente
     private List<Tratamiento> tratamientos = new ArrayList<>();
 
     // Constructores
@@ -97,7 +93,6 @@ public class Paciente {
         return historial;
     }
 
-    // Mantiene sincronizado el otro lado (Historial.paciente)
     public void setHistorial(Historial historial) {
         if (this.historial == historial) {
             return;
@@ -120,7 +115,6 @@ public class Paciente {
         this.tratamientos = tratamientos;
     }
 
-    // Metodos 1 a N (mantienen sincronizados ambos lados)
     public void agregarTratamiento(Tratamiento tratamiento) {
         if (!tratamientos.contains(tratamiento)) {
             tratamientos.add(tratamiento);
@@ -134,7 +128,6 @@ public class Paciente {
         }
     }
 
-    // No se incluyen historial ni tratamientos para evitar recursion infinita
     @Override
     public String toString() {
         return "Paciente [id=" + id + ", nombreP=" + nombreP + ", fechaNacimiento=" + fechaNacimiento
